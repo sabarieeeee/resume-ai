@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detected Resume Sections</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Detected Resume Sections</h1>
+
+        {% for section in ["Personal Details", "Skills", "Education", "Projects", "Experience"] %}
+    {% set items = sections[section] %}
+            <div class="option-box">
+                <h2>{{ section }}</h2>
+
+                {% if items %}
+                    <ul>
+                        {% for item in items %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="subtitle">No data detected</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <a href="/">← Go back</a>
+    </div>
+</body>
+</html>

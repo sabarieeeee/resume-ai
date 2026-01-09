@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ATS Resume Analysis</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="app-body">
+
+<!-- TOP BAR -->
+<header class="top-bar">
+    ResumeAI
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="app-content">
+
+    <!-- PAGE TITLE -->
+    <h1>ATS Resume Analysis</h1>
+    <p class="text-muted">
+        This analysis reflects how your resume performs in its original form
+        before any ATS optimization.
+    </p>
+
+    <!-- ATS SCORE -->
+    <div class="card">
+        <h2>Original ATS Score</h2>
+
+        <p style="font-size: 26px; font-weight: 700; color: var(--accent);">
+            {{ score }} / 100
+        </p>
+
+        <p class="text-muted">
+            This score is calculated based on section presence, skills,
+            structure, and basic ATS compatibility.
+        </p>
+    </div>
+
+    <!-- DETECTED DATA -->
+    <div class="card">
+        <h2>Detected Resume Data</h2>
+
+        {% for section, items in sections.items() %}
+            <h3>{{ section }}</h3>
+
+            {% if items %}
+                <ul>
+                    {% for item in items %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">No data detected</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- FEEDBACK -->
+    <div class="card">
+        <h2>ATS Feedback & Suggestions</h2>
+
+        {% if feedback %}
+            <ul>
+                {% for tip in feedback %}
+                    <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">
+                Your resume already follows good ATS practices.
+            </p>
+        {% endif %}
+    </div>
+
+    <!-- CTA -->
+    <div class="card" style="text-align: center;">
+        <h2>Next Step</h2>
+        <p class="text-muted">
+            View your ATS-optimized resume with improved structure,
+            content, and score.
+        </p>
+
+        <a href="/preview">
+            <button class="primary-btn">
+                View ATS-Optimized Resume →
+            </button>
+        </a>
+    </div>
+
+    <!-- BACK -->
+    <p style="margin-top: 24px;">
+        <a href="/" style="color: var(--text-muted);">
+            ← Back to Home
+        </a>
+    </p>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="app-footer">
+    ResumeAI • ATS Resume Builder & Analyzer
+</footer>
+
+</body>
+</html>

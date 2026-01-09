@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ResumeAI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="app-body">
+
+<header class="top-bar">ResumeAI</header>
+
+<main class="app-content">
+    <h1>Build an ATS-Friendly Resume</h1>
+    <p>Upload an existing resume or write about yourself. We’ll analyze, improve, and generate a professional resume.</p>
+
+    <div class="card">
+        <h3>Upload Resume (PDF / DOCX)</h3>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="resume" required>
+            <br><br>
+            <button class="primary-btn">Analyze Resume</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3>No Resume? Write About Yourself</h3>
+        <form action="/generate" method="post">
+            <textarea name="profile_text" rows="6"
+                placeholder="Example: I am a computer science student skilled in Python and Java..."></textarea>
+            <br><br>
+            <button class="primary-btn">Generate Resume</button>
+        </form>
+    </div>
+</main>
+
+<footer class="app-footer">
+    ResumeAI • ATS-Friendly Resume Builder
+</footer>
+
+</body>
+</html>

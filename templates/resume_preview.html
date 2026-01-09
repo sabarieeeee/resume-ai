@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ATS Optimized Resume</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="app-body">
+
+<header class="top-bar">ResumeAI</header>
+
+<main class="app-content">
+
+    <div class="card" style="text-align:center;">
+        <h2>ATS-Optimized Resume</h2>
+        <p style="font-size:18px; font-weight:600; color: var(--success);">
+            Improved ATS Score: {{ improved_score }} / 100
+        </p>
+        <p class="text-muted">
+            This score reflects the resume after ATS optimization.
+        </p>
+    </div>
+
+    <div class="resume-sheet">
+
+        <div class="resume-header">
+            <h1>{{ generated_resume["Name"] }}</h1>
+            <p class="resume-sub">
+                {{ generated_resume["Email"] }} • {{ generated_resume["Phone"] }}
+            </p>
+        </div>
+
+        <section>
+            <h2>Skills</h2>
+            <p>{{ generated_resume["Skills"] }}</p>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <p>{{ generated_resume["Education"] }}</p>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <ul>
+                {% for p in generated_resume["Projects"] %}
+                    <li>{{ p }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Experience</h2>
+            <ul>
+                {% for e in generated_resume["Experience"] %}
+                    <li>{{ e }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+    </div>
+
+    <div style="text-align:center; margin-top:32px;">
+
+        <form action="/download" method="post">
+            <input
+                type="text"
+                name="filename"
+                placeholder="Enter file name (without .pdf)"
+                required
+                style="padding:10px; width:260px; border-radius:6px; border:none;"
+            >
+            <br><br>
+            <button class="primary-btn" type="submit">
+                Download Resume (PDF)
+            </button>
+        </form>
+
+        <div style="margin-top:14px;">
+            <a href="/" style="color: var(--text-muted); text-decoration:none;">
+                ← Back to Home
+            </a>
+        </div>
+
+    </div>
+
+</main>
+
+<footer class="app-footer">
+    ResumeAI • ATS Resume Builder
+</footer>
+
+</body>
+</html>
