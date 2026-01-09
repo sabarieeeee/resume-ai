@@ -1,3 +1,4 @@
 flask
+reportlab
 pdfminer.six
 python-docx
